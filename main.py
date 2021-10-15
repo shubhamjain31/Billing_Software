@@ -98,6 +98,24 @@ class Bill_App:
 		self.entry_qty = ttk.Entry(Product_Frame, font=("times new roman", 10, "bold"), width=26)
 		self.entry_qty.grid(row=1, column=3, stick=W, padx=1)
 
+		# Image LabelFrame
+		Image_Frame = Frame(Main_Frame, bd=10)
+		Image_Frame.place(x=10, y=150, width=1290, height=455)
+
+		image_1 = Image.open("images/image(3).jpg")
+		image_1 = image_1.resize((640, 440), Image.ANTIALIAS)
+		self.photoimage_1 = ImageTk.PhotoImage(image_1)
+
+		lbl_image_1 = Label(Image_Frame, image=self.photoimage_1)
+		lbl_image_1.place(x=0, y=0, width=640, height=440)
+
+		image_2 = Image.open("images/image(4).jpg")
+		image_2 = image_2.resize((640, 440), Image.ANTIALIAS)
+		self.photoimage_2 = ImageTk.PhotoImage(image_2)
+
+		lbl_image_2 = Label(Image_Frame, image=self.photoimage_2)
+		lbl_image_2.place(x=642, y=0, width=630, height=440)
+
 		# Search LabelFrame
 		Search_Frame = Frame(Main_Frame, bg="white", bd=2)
 		Search_Frame.place(x=1370, y=15, width=480, height=570)
@@ -113,7 +131,7 @@ class Bill_App:
 
 		# Bill LabelFrame
 		Bill_Frame = LabelFrame(Main_Frame, text="Bill Area", font=("times new roman", 12, "bold"), bg="white", fg="red")
-		Bill_Frame.place(x=1370, y=55, width=480, height=570)
+		Bill_Frame.place(x=1370, y=55, width=480, height=550)
 
 		scroll_y = Scrollbar(Bill_Frame, orient=VERTICAL)
 		self.textarea = Text(Bill_Frame, yscrollcommand=scroll_y.set, bg="white", fg="blue", font=("times new roman", 12, "bold"))
@@ -128,24 +146,24 @@ class Bill_App:
 		self.lbl_subTotal = Label(Bill_Counter_Frame, font=("times new roman", 12, "bold"), bg="white", text="Sub Total", bd=4)
 		self.lbl_subTotal.grid(row=0, column=0, stick=W, padx=5, pady=2)
 
-		self.entry_subTotal = ttk.Entry(Bill_Counter_Frame, font=("times new roman", 10, "bold"), width=24)
+		self.entry_subTotal = ttk.Entry(Bill_Counter_Frame, font=("times new roman", 10, "bold"), width=70)
 		self.entry_subTotal.grid(row=0, column=1, stick=W, padx=5, pady=2)
 
 		self.lbl_tax = Label(Bill_Counter_Frame, font=("times new roman", 12, "bold"), bg="white", text="Gov Tax", bd=4)
 		self.lbl_tax.grid(row=1, column=0, stick=W, padx=5, pady=2)
 
-		self.txt_tax = ttk.Entry(Bill_Counter_Frame, font=("times new roman", 10, "bold"), width=24)
+		self.txt_tax = ttk.Entry(Bill_Counter_Frame, font=("times new roman", 10, "bold"), width=70)
 		self.txt_tax.grid(row=1, column=1, stick=W, padx=5, pady=2)
 
 		self.lbl_amountTotal = Label(Bill_Counter_Frame, font=("times new roman", 12, "bold"), bg="white", text="Total", bd=4)
 		self.lbl_amountTotal.grid(row=2, column=0, stick=W, padx=5, pady=2)
 
-		self.txt_amountTotal = ttk.Entry(Bill_Counter_Frame, font=("times new roman", 10, "bold"), width=24)
+		self.txt_amountTotal = ttk.Entry(Bill_Counter_Frame, font=("times new roman", 10, "bold"), width=70)
 		self.txt_amountTotal.grid(row=2, column=1, stick=W, padx=5, pady=2)
 
 		# Button Frame
 		Btn_Frame = Frame(Bill_Counter_Frame, bg="white")
-		Btn_Frame.place(x=320, y=0)
+		Btn_Frame.place(x=620, y=1)
 
 		self.btn_add_to_cart = Button(Btn_Frame, text="Add To Cart", font=("arial", 15, "bold"), bg="orangered", fg="white", bd=4, height=2, width=15, cursor="hand2")
 		self.btn_add_to_cart.grid(row=0, column=0)
