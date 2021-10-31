@@ -8,6 +8,69 @@ class Bill_App:
 		self.root.geometry("1800x900+0+0")
 		self.root.title("Billing Software")
 
+		# Product Categories List
+		self.Category 			= ["Select Options", "Clothing", "LifeStyle", "Mobiles"]
+		self.SubCatClothing 	= ["Pant", "T-Shirt", "Shirt"]
+		
+		self.pant 				= ["Levis", "Mufti", "Spykar"]
+		self.price_levis  = 5000
+		self.price_mufti  = 7000
+		self.price_spykar = 8000
+
+		self.pant 				= ["Polo", "Roadster", "Jack&Jones"]
+		self.price_polo      = 1500
+		self.price_roadster  = 1800
+		self.price_jackjones = 1700
+
+		self.pant 				= ["Peter England", "Louis Phillipe", "Park Avenue"]
+		self.price_peter  = 2100
+		self.price_louis  = 2700
+		self.price_park   = 1470
+		
+		self.SubCatLifeStyle 	= ["Bath Soap", "Face Cream", "Hair Oil"]
+		self.Bath_soap 			= ["LifeBuy", "Lux", "Santoor", "Pearl"]
+		self.price_life  	= 20
+		self.price_lux  	= 20
+		self.price_santoor  = 20
+		self.price_garnier  = 30
+
+		self.Bath_soap 			= ["Fair&Lovely", "Ponds", "Olay", "Garnier"]
+		self.price_fair  	= 20
+		self.price_ponds  	= 20
+		self.price_olay     = 20
+		self.price_pearl    = 30
+
+		self.Bath_soap 			= ["Parachute", "Jashmin", "Bajaj"]
+		self.price_para  	= 25
+		self.price_jashmin  = 22
+		self.price_bajaj    = 30
+
+		self.SubCatMobiles 		= ["Iphone", "Sumsung", "Xiome", "RealMe", "One"]
+		self.Bath_soap 			= ["Iphone_X", "Iphone_11", "Iphone_12"]
+		self.price_ix  	        = 40000
+		self.price_i11          = 60000
+		self.price_i12          = 85000
+
+		self.Bath_soap 	   = ["Sumsung M16", "Sumsung 12", "Sumsung 21"]
+		self.price_sm16    = 16000
+		self.price_sm12    = 12000
+		self.price_sm21    = 18000
+
+		self.Xiome 			= ["Red11", "Redme-12", "RedmePro"]
+		self.price_r11  	= 11000
+		self.price_r12      = 12000
+		self.price_rpro     = 9000
+
+		self.RealMe 		= ["RealMe 12", "RealMe 13", "Realme Pro"]
+		self.price_rel12  	= 25000
+		self.price_rel13    = 22000
+		self.price_relpro   = 30000
+
+		self.OnePlus 		= ["OnePlus1", "OnePlus2", "OnePlus3"]
+		self.price_one1  	= 45000
+		self.price_one2     = 60000
+		self.price_one3     = 45800
+
 		img = Image.open("images/image.jpg")
 		img = img.resize((500, 130), Image.ANTIALIAS)
 		self.photoimg = ImageTk.PhotoImage(img)
@@ -71,14 +134,17 @@ class Bill_App:
 		self.lbl_Category = Label(Product_Frame, font=("times new roman", 12, "bold"), bg="white", text="Select Categories", bd=4)
 		self.lbl_Category.grid(row=0, column=0, stick=W, padx=5, pady=2)
 
-		self.Combo_Category = ttk.Combobox(Product_Frame, font=("times new roman", 10, "bold"), width=24, state="readonly")
+		self.Combo_Category = ttk.Combobox(Product_Frame, font=("times new roman", 10, "bold"), width=24, state="readonly", value=self.Category)
+		self.Combo_Category.current(0)
 		self.Combo_Category.grid(row=0, column=1, stick=W, padx=5, pady=2)
+		self.Combo_Category.bind("<<ComboboxSelected>>", self.Categories)
 
 		self.lbl_SubCategory = Label(Product_Frame, font=("times new roman", 12, "bold"), bg="white", text="Sub Category", bd=4)
 		self.lbl_SubCategory.grid(row=1, column=0, stick=W, padx=5, pady=2)
 
-		self.Combo_SubCategory = ttk.Combobox(Product_Frame, font=("times new roman", 10, "bold"), width=24, state="readonly")
+		self.Combo_SubCategory = ttk.Combobox(Product_Frame, value=[""], font=("times new roman", 10, "bold"), width=24, state="readonly")
 		self.Combo_SubCategory.grid(row=1, column=1, stick=W, padx=5, pady=2)
+		self.Combo_SubCategory.bind("<<ComboboxSelected>>", self.Product_add)
 
 		self.lbl_product = Label(Product_Frame, font=("times new roman", 12, "bold"), bg="white", text="Product Name", bd=4)
 		self.lbl_product.grid(row=2, column=0, stick=W, padx=5, pady=2)
@@ -182,6 +248,24 @@ class Bill_App:
 
 		self.btn_exit = Button(Btn_Frame, text="Exit", font=("arial", 15, "bold"), bg="orangered", fg="white", bd=4, height=2, width=15, cursor="hand2")
 		self.btn_exit.grid(row=0, column=5)
+
+	def Categories(self, event=""):
+		if self.Combo_Category.get() == "Clothing":
+			self.Combo_SubCategory.config(value=self.SubCatClothing)
+			self.Combo_SubCategory.current(0)
+
+		if self.Combo_Category.get() == "LifeStyle":
+			self.Combo_SubCategory.config(value=self.SubCatLifeStyle)
+			self.Combo_SubCategory.current(0)
+
+		if self.Combo_Category.get() == "Mobiles":
+			self.Combo_SubCategory.config(value=self.SubCatMobiles)
+			self.Combo_SubCategory.current(0)
+
+	def Product_add(self, event=""):
+		if self.Combo_SubCategory.get() == "Pant":
+			self.Combo_Product.config(value=self.pant)
+			self.Combo_Product.current(0)
 
 
 if __name__ == '__main__':
