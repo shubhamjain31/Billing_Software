@@ -17,12 +17,12 @@ class Bill_App:
 		self.price_mufti  = 7000
 		self.price_spykar = 8000
 
-		self.pant 				= ["Polo", "Roadster", "Jack&Jones"]
+		self.T_shirt 				= ["Polo", "Roadster", "Jack&Jones"]
 		self.price_polo      = 1500
 		self.price_roadster  = 1800
 		self.price_jackjones = 1700
 
-		self.pant 				= ["Peter England", "Louis Phillipe", "Park Avenue"]
+		self.Shirt 				= ["Peter England", "Louis Phillipe", "Park Avenue"]
 		self.price_peter  = 2100
 		self.price_louis  = 2700
 		self.price_park   = 1470
@@ -243,7 +243,7 @@ class Bill_App:
 		self.btn_print = Button(Btn_Frame, text="Print", font=("arial", 15, "bold"), bg="orangered", fg="white", bd=4, height=2, width=15, cursor="hand2")
 		self.btn_print.grid(row=0, column=3)
 
-		self.btn_clear = Button(Btn_Frame, text="Cler", font=("arial", 15, "bold"), bg="orangered", fg="white", bd=4, height=2, width=15, cursor="hand2")
+		self.btn_clear = Button(Btn_Frame, text="Clear", font=("arial", 15, "bold"), bg="orangered", fg="white", bd=4, height=2, width=15, cursor="hand2")
 		self.btn_clear.grid(row=0, column=4)
 
 		self.btn_exit = Button(Btn_Frame, text="Exit", font=("arial", 15, "bold"), bg="orangered", fg="white", bd=4, height=2, width=15, cursor="hand2")
@@ -265,6 +265,18 @@ class Bill_App:
 	def Product_add(self, event=""):
 		if self.Combo_SubCategory.get() == "Pant":
 			self.Combo_Product.config(value=self.pant)
+			self.Combo_Product.current(0)
+
+		if self.Combo_SubCategory.get() == "T-Shirt":
+			self.Combo_Product.config(value=self.T_shirt)
+			self.Combo_Product.current(0)
+
+		if self.Combo_SubCategory.get() == "Shirt":
+			self.Combo_Product.config(value=self.Shirt)
+			self.Combo_Product.current(0)
+
+		if self.Combo_SubCategory.get() == "Bath Soap":
+			self.Combo_Product.config(value=self.Bath_soap)
 			self.Combo_Product.current(0)
 
 
