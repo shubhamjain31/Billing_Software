@@ -1,12 +1,28 @@
 from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk
+import random
 
 class Bill_App:
 	def __init__(self, root):
 		self.root = root
 		self.root.geometry("1800x900+0+0")
 		self.root.title("Billing Software")
+
+		self.c_name  			= StringVar()
+		self.c_phon 			= StringVar()
+		self.bill_no 			= StringVar()
+		self.c_email 			= StringVar()
+		self.search_bill 		= StringVar()
+		self.product 			= StringVar()
+		self.prices 			= IntVar()
+		self.qty 				= IntVar()
+		self.sub_total 			= StringVar()
+		self.tax_input 			= StringVar()
+		self.total 				= StringVar()
+
+		z = random.randint(1000, 9999)
+		self.bill_no.set(z)
 
 		# Product Categories List
 		self.Category 			= ["Select Options", "Clothing", "LifeStyle", "Mobiles"]
@@ -112,19 +128,19 @@ class Bill_App:
 		self.lbl_mob = Label(Cust_Frame, text="Mobile No.", font=("times new roman", 12, "bold"), bg="white")
 		self.lbl_mob.grid(row=0, column=0, stick=W, padx=5, pady=2)
 
-		self.entry_mob = ttk.Entry(Cust_Frame, text="Mobile No.", font=("times new roman", 10, "bold"), width=54)
+		self.entry_mob = ttk.Entry(Cust_Frame, text="Mobile No.", font=("times new roman", 10, "bold"), width=54, textvariable=self.c_phon)
 		self.entry_mob.grid(row=0, column=1)
 
 		self.lblCustName = Label(Cust_Frame ,text="Customer Name", font=("times new roman", 12, "bold"), bg="white", bd=4)
 		self.lblCustName.grid(row=1, column=0, stick=W, padx=5, pady=2)
 
-		self.txtCustName = ttk.Entry(Cust_Frame, text="", font=("arial", 10, "bold"), width=54)
+		self.txtCustName = ttk.Entry(Cust_Frame, text="", font=("arial", 10, "bold"), width=54, textvariable=self.c_name)
 		self.txtCustName.grid(row=1, column=1, stick=W, padx=5, pady=2)
 
 		self.lblEmail = Label(Cust_Frame ,text="Email", font=("times new roman", 12, "bold"), bg="white", bd=4)
 		self.lblEmail.grid(row=2, column=0, stick=W, padx=5, pady=2)
 
-		self.txtEmail = ttk.Entry(Cust_Frame, text="", font=("arial", 10, "bold"), width=54)
+		self.txtEmail = ttk.Entry(Cust_Frame, text="", font=("arial", 10, "bold"), width=54, textvariable=self.c_email)
 		self.txtEmail.grid(row=2, column=1, stick=W, padx=5, pady=2)
 
 		# Product LabelFrame
@@ -151,11 +167,12 @@ class Bill_App:
 
 		self.Combo_Product = ttk.Combobox(Product_Frame, font=("times new roman", 10, "bold"), width=24, state="readonly")
 		self.Combo_Product.grid(row=2, column=1, stick=W, padx=5, pady=2)
+		self.Combo_Product.bind("<<ComboboxSelected>>", self.price)
 
 		self.lbl_price = Label(Product_Frame, font=("times new roman", 12, "bold"), bg="white", text="Price", bd=4)
 		self.lbl_price.grid(row=0, column=2, stick=W, padx=5, pady=2)
 
-		self.Combo_Price = ttk.Combobox(Product_Frame, font=("times new roman", 10, "bold"), width=24, state="readonly")
+		self.Combo_Price = ttk.Combobox(Product_Frame, font=("times new roman", 10, "bold"), width=24, state="readonly", textvariable=self.prices)
 		self.Combo_Price.grid(row=0, column=3, stick=W, padx=5, pady=2)
 
 		self.lbl_qty = Label(Product_Frame, font=("times new roman", 12, "bold"), bg="white", text="Quality", bd=4)
@@ -298,6 +315,20 @@ class Bill_App:
 		if self.Combo_SubCategory.get() == "Xiome":
 			self.Combo_Product.config(value=self.Xiome)
 			self.Combo_Product.current(0)
+
+		if self.Combo_SubCategory.get() == "RealMe":
+			self.Combo_Product.config(value=self.RealMe)
+			self.Combo_Product.current(0)
+
+		if self.Combo_SubCategory.get() == "One":
+			self.Combo_Product.config(value=self.OnePlus)
+			self.Combo_Product.current(0)
+
+	def price(self, event=""):
+		if self.Combo_Product.get() == "Levis":
+			self.Combo_Price.config(value=price_levis)
+			self.Combo_Price.current(0)
+			self.qty.set(1)
 
 
 if __name__ == '__main__':
