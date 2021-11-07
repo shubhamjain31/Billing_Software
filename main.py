@@ -28,30 +28,30 @@ class Bill_App:
 		self.price_park   = 1470
 		
 		self.SubCatLifeStyle 	= ["Bath Soap", "Face Cream", "Hair Oil"]
-		self.Bath_soap 			= ["LifeBuy", "Lux", "Santoor", "Pearl"]
+		self.Bath_soap 			= ["LifeBoy", "Lux", "Santoor", "Pearl"]
 		self.price_life  	= 20
 		self.price_lux  	= 20
 		self.price_santoor  = 20
 		self.price_garnier  = 30
 
-		self.Bath_soap 			= ["Fair&Lovely", "Ponds", "Olay", "Garnier"]
+		self.Face_creame 		= ["Fair&Lovely", "Ponds", "Olay", "Garnier"]
 		self.price_fair  	= 20
 		self.price_ponds  	= 20
 		self.price_olay     = 20
 		self.price_pearl    = 30
 
-		self.Bath_soap 			= ["Parachute", "Jashmin", "Bajaj"]
+		self.Hair_oil 			= ["Parachute", "Jashmin", "Bajaj"]
 		self.price_para  	= 25
 		self.price_jashmin  = 22
 		self.price_bajaj    = 30
 
 		self.SubCatMobiles 		= ["Iphone", "Sumsung", "Xiome", "RealMe", "One"]
-		self.Bath_soap 			= ["Iphone_X", "Iphone_11", "Iphone_12"]
+		self.Iphone 			= ["Iphone_X", "Iphone_11", "Iphone_12"]
 		self.price_ix  	        = 40000
 		self.price_i11          = 60000
 		self.price_i12          = 85000
 
-		self.Bath_soap 	   = ["Sumsung M16", "Sumsung 12", "Sumsung 21"]
+		self.Sumsung 	   = ["Sumsung M16", "Sumsung 12", "Sumsung 21"]
 		self.price_sm16    = 16000
 		self.price_sm12    = 12000
 		self.price_sm21    = 18000
@@ -277,6 +277,26 @@ class Bill_App:
 
 		if self.Combo_SubCategory.get() == "Bath Soap":
 			self.Combo_Product.config(value=self.Bath_soap)
+			self.Combo_Product.current(0)
+
+		if self.Combo_SubCategory.get() == "Face Cream":
+			self.Combo_Product.config(value=self.Face_creame)
+			self.Combo_Product.current(0)
+
+		if self.Combo_SubCategory.get() == "Hair Oil":
+			self.Combo_Product.config(value=self.Hair_oil)
+			self.Combo_Product.current(0)
+
+		if self.Combo_SubCategory.get() == "Iphone":
+			self.Combo_Product.config(value=self.Iphone)
+			self.Combo_Product.current(0)
+
+		if self.Combo_SubCategory.get() == "Sumsung":
+			self.Combo_Product.config(value=self.Sumsung)
+			self.Combo_Product.current(0)
+
+		if self.Combo_SubCategory.get() == "Xiome":
+			self.Combo_Product.config(value=self.Xiome)
 			self.Combo_Product.current(0)
 
 
